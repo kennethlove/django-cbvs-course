@@ -28,7 +28,7 @@ class Team(models.Model):
     coach = models.ForeignKey(User, related_name='teams')
     practice_location = models.CharField(max_length=255)
 
-    def __string__(self):
+    def __str__(self):
         return self.name
 
 
