@@ -1,10 +1,15 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from . import models
 
 
-@login_required
 def team_list(request):
-    teams = models.Team.objects.filter(coach=request.user)
+    teams = models.Team.objects.all()
+    if request.user.is_authenticated:
+        teams = teams.filter(coach=request.user)
     return render(request, 'teams/team_list.html', {'teams': teams})
+
+
+def team_detail(request, pk):
+    team = get_object_or_404(models.Team, pk=pk)
+    return render(request, 'teams/team_detail.html', {'team': team})

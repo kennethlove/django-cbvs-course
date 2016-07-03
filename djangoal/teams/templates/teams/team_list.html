@@ -1,14 +1,16 @@
 {% extends "teams/_layout.html" %}
+{% load static from staticfiles %}
+{% load team_tags %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/icons.css' %}">
+{% endblock %}
 
 {% block body_content %}
 <h1 class="page-header">Dashboard</h1>
 <div class="row placeholders">
 	{% for team in teams %}
-	<div class="col-xs-6 col-sm-3 placeholder">
-		<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-fluid" alt="Generic placeholder thumbnail">
-		<h4>{{ team.name }}</h4>
-		<span class="text-muted">{{ team.players.count }} player{{ team.players.count|pluralize }}</span>
-	</div>
+		{% team_avatar team %}
 	{% endfor %}
 </div>
 {% endblock %}
