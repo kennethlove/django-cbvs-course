@@ -5,8 +5,6 @@ from . import models
 
 def team_list(request):
     teams = models.Team.objects.all()
-    if request.user.is_authenticated:
-        teams = teams.filter(coach=request.user)
     return render(request, 'teams/team_list.html', {'teams': teams})
 
 
