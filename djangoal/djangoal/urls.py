@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^hello/$', views.HelloWorldView.as_view(), name='hello'),
     url(r'teams/', include('teams.urls', namespace='teams')),
 ]
