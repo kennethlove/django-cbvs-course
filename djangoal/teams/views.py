@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView, DetailView,
+    CreateView, UpdateView, DeleteView
+)
 
 from . import models
 
@@ -20,4 +23,18 @@ class TeamListView(ListView):
 
 
 class TeamDetailView(DetailView):
+    model = models.Team
+
+
+class TeamCreateView(CreateView):
+    fields = ('name', 'practice_location', 'coach')
+    model = models.Team
+
+
+class TeamUpdateView(UpdateView):
+    fields = ('name', 'practice_location', 'coach')
+    model = models.Team
+
+
+class TeamDeleteView(DeleteView):
     model = models.Team
