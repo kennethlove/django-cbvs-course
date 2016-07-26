@@ -13,4 +13,14 @@
 		{% team_avatar team %}
 	{% endfor %}
 </div>
+
+{% if user.is_authenticated %}
+<div class="row">
+	<form method='POST'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" class="btn btn-primary" value="Save">
+	</form>
+</div>
+{% endif %}
 {% endblock %}
